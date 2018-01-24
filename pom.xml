@@ -45,8 +45,8 @@
                 <version>${liquibase.version}</version>
                 <configuration>
                     <promptOnNonLocalDatabase>true</promptOnNonLocalDatabase>
-                    <changeLogFile>${project.build.directory}/classes/changelog/db.changelog-master.xml</changeLogFile>
-                    <propertyFile>${project.build.directory}/classes/user/db-${user.name}.properties</propertyFile>
+                    <diffChangeLogFile>src/main/resources/db/changelog/db.changelog-diff-${maven.build.timestamp}.xml</diffChangeLogFile>
+                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                 </configuration>
                 <!--  I personally prefer run  it manually
                    <executions>
@@ -58,6 +58,13 @@
                      </execution>
                    </executions>
                    -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-hibernate4</artifactId>
+                        <version>3.5</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

@@ -1,1 +1,0 @@
-Just run the following command `cat db-username.properties > ~/db-$(whoami).properties` in this directory to configure your database
