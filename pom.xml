@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.database.liquibase</groupId>
+    <artifactId>liquibase-sample</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>liquibase-sample</name>
+    <url>http://maven.apache.org</url>
+
+    <!-- Parent, Artifact, ... -->
+    <properties>
+        <liquibase.version>3.4.1</liquibase.version>
+        <mysql.version>5.1.6</mysql.version>
+        <liquibase.version>3.4.2</liquibase.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>liquibase-sample</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>${liquibase.version}</version>
+                <configuration>
+                    <promptOnNonLocalDatabase>true</promptOnNonLocalDatabase>
+                    <changeLogFile>${project.build.directory}/classes/changelog/db.changelog-master.xml</changeLogFile>
+                    <propertyFile>${project.build.directory}/classes/user/db-${user.name}.properties</propertyFile>
+                </configuration>
+                <!--  I personally prefer run  it manually
+                   <executions>
+                     <execution>
+                       <phase>process-resources</phase>
+                       <goals>
+                         <goal>update</goal>
+                       </goals>
+                     </execution>
+                   </executions>
+                   -->
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>migration-developer</id>
+            <activation>
+                <file>
+                    <exists>${user.home}/db-${user.name}.properties</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>${liquibase.version}</version>
+                        <configuration>
+                            <propertyFile>${user.home}/db-${user.name}.properties</propertyFile>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

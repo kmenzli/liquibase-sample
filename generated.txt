@@ -1,0 +1,32 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building liquibase-sample 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ liquibase-sample ---
+[INFO] Deleting /Users/exo/Downloads/WIP/15_jee/6_liquibase/liquibase-sample/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-cli) @ liquibase-sample ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- liquibase-maven-plugin:3.4.1:generateChangeLog (default-cli) @ liquibase-sample ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Parsing Liquibase Properties File
+[INFO]   File: /Users/exo/db-exo.properties
+[INFO] ------------------------------------------------------------------------
+[INFO] Executing on Database: jdbc:mysql://localhost:3306/tribe
+[INFO] Generating Change Log from database root@172.18.0.1 @ jdbc:mysql://localhost:3306/tribe (Default Schema: tribe)
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd"/>
+[INFO] Output written to Change Log file, null
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.215 s
+[INFO] Finished at: 2018-01-24T13:20:33+01:00
+[INFO] Final Memory: 11M/205M
+[INFO] ------------------------------------------------------------------------

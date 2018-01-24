@@ -1,0 +1,2 @@
+Générer un fichier changeLog de départ pour (re)partir sur de bonnes bases. 
+Voici la commande qu’il faudra alors utiliser : mvn clean resources:resources liquibase:generateChangeLog -Dliquibase.outputChangeLogFile=output.xml
